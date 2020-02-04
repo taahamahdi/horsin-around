@@ -32,7 +32,10 @@ size_t callback_func(void *ptr, size_t size, size_t count, std::string *data) {
 }
 
 std::string getHorseETA(int seconds) {
-    std::chrono::seconds secs{seconds};
+    // A horse is approximately 10 times faster at galloping than a human's
+    // walking speed
+    const int WALKING_TO_HORSE_FACTOR = 10;
+    std::chrono::seconds secs{seconds / WALKING_TO_HORSE_FACTOR};
     std::chrono::minutes mins{};
     std::chrono::hours hours{};
     while (std::chrono::duration_cast<std::chrono::hours>(secs) >=
@@ -45,12 +48,6 @@ std::string getHorseETA(int seconds) {
         mins++;
         secs -= std::chrono::minutes(1);
     }
-
-    // A horse is approximately 10 times faster at galloping than a human's
-    // walking speed
-    hours /= 10;
-    mins /= 10;
-    secs /= 10;
 
     if (!hours.count() && !mins.count() && !secs.count()) {
         return "no time at all";
