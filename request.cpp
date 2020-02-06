@@ -1,6 +1,7 @@
-#include "request.h"
-#include "curl/curl.h"
+#include <curl/curl.h>
 #include <sstream>
+
+#include "request.h"
 
 Request::Request(std::string origin, std::string destination, std::string key)
     : origin{origin}, destination{destination}, mode{"walking"}, key{key} {
