@@ -1,5 +1,7 @@
 # horsin-around
 
+Ever wonder how long it would take to go from point A to B using a horse?
+
 ## Setup
 Depends on `libcurl`, `JsonCpp`.
 
